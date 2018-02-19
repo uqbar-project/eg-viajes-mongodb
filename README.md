@@ -20,6 +20,8 @@ Antes de correr los test, tenés que instalar una base de datos [MongoDB Communi
 
 ```bash
 $ sudo service mongod start
+# o bien
+$ sudo systemctl start mongodb
 ```
 
 Podés fijarte en la carpeta [scripts](scripts) los queries que podés correr para seguir los ejemplos del apunte.
