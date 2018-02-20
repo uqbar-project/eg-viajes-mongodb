@@ -1,23 +1,23 @@
 /* Conocer los viajes del 23/04/2017 */
-db.viajes.find({"fecha": "23/04/2017"}).pretty();
+db.viajes.find({"fecha": "23/04/2017"}).pretty()
 
 /* La cantidad de viajes que se hicieron el 23/04 */
-db.viajes.find({"fecha": "23/04/2017"}).count();
+db.viajes.find({"fecha": "23/04/2017"}).count()
 
 /* Los destinos de los viajes del 23/04 */
-db.viajes.find({"fecha": "23/04/2017"}).map( function(viaje) { return viaje.destino } );
+db.viajes.find({"fecha": "23/04/2017"}).map( viaje => viaje.destino )
 
 /* Vemos el query plan */
-db.viajes.find({"fecha": "23/04/2017"}).explain();
+db.viajes.find({"fecha": "23/04/2017"}).explain()
 
 /* Agregamos un índice por fecha */
-db.viajes.createIndex( {fecha: 1});
+db.viajes.createIndex( {fecha: 1})
 
 /* Cómo queda ahora */
-db.viajes.find({"fecha": "23/04/2017"}).explain();
+db.viajes.find({"fecha": "23/04/2017"}).explain()
 
 /* Conocer qué viajes hizo Daniel */
-db.viajes.find({ "chofer.nombre": "Daniel" }).pretty();
+db.viajes.find({ "chofer.nombre": "Daniel" }).pretty()
 
 /* Conocer el total en $ de un cliente para un mes */
 var mapCostosDelMes = function() {
@@ -25,13 +25,13 @@ var mapCostosDelMes = function() {
         if (partesFecha[1].parseInt() == 4) {
            emit(this.cliente.nombre, this.costo)
         }
-};
+}
 
 var totalesPorCliente = function(nombreCliente, costosViaje) {
-		return { costo: Array.sum(costosViaje) };
-};
+		return { costo: Array.sum(costosViaje) }
+}
 
-db.viajes.mapReduce(mapCostosDelMes, totalesPorCliente, { out: "totalesPorCliente" });
+db.viajes.mapReduce(mapCostosDelMes, totalesPorCliente, { out: "totalesPorCliente" })
 
 
 /* Lo mismo con un aggregate.sum */

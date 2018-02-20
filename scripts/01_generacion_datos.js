@@ -1,3 +1,5 @@
+db.createCollection("viajes")
+
 db.viajes.save({
     fecha: "23/04/2017",
     chofer: {
@@ -16,7 +18,7 @@ db.viajes.save({
     origen: "UNSAM",
     destino: "Sarmiento y Matheu (San Martín)",
     costo: 110
-});
+})
 
 
 db.viajes.save({
@@ -37,7 +39,7 @@ db.viajes.save({
     origen: "Soul Train",
     destino: "Lincoln y 25 de Mayo (San Martín)",
     costo: 50
-});
+})
 
 db.viajes.save({
     fecha: "24/04/2017",
@@ -57,9 +59,9 @@ db.viajes.save({
     origen: "Pueyrredón y San Lorenzo (San Martín)	",
     destino: "Lincoln y 25 de Mayo (San Martín)",
     costo: 75
-});
+})
 
--- Viaje malo
+// Viaje malo
 db.viajes.save({
     fecha: "24/04/2017",
     chofer: {
@@ -78,5 +80,5 @@ db.viajes.save({
     origen: "Pueyrredón y San Lorenzo (San Martín)	",
     destino: "Lincoln y 25 de Mayo (San Martín)",
     costo: 10
-});
+})
 
