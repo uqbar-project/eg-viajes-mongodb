@@ -22,7 +22,7 @@ db.viajes.find({ "chofer.nombre": "Daniel" }).pretty()
 /* Conocer el total en $ de un cliente para un mes */
 var mapCostosDelMes = function() {
         var partesFecha = this.fecha.split('/')
-        if (partesFecha[1].parseInt() == 4) {
+        if (parseInt(partesFecha[1]) == 4) {
            emit(this.cliente.nombre, this.costo)
         }
 }
