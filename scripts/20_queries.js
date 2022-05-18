@@ -71,3 +71,19 @@ let bulk = db.viajes.initializeOrderedBulkOp()
 bulk.find({ "chofer.nombre": "Daniel" }).update({ "$mul": { "costo": 1.2 }})
 bulk.execute()
 db.viajes.find({ "chofer.nombre": "Daniel"})
+
+   /** Almacenamos ahora la lista de choferes con los puntajes que le dan cada uno de los clientes */
+db.choferes.insertOne({ "nombre": "Verónica", puntajes: [ 3, 5, 4]})
+db.choferes.insertOne({ "nombre": "Daniel", puntajes: [ 4, 4, 4, 5, 5, 5]})
+
+db.choferes.aggregate(
+   [
+      { $unwind: '$puntajes' },
+      { $group: {
+           _id: '$nombre',
+           puntaje: { $avg: '$puntajes' }
+        }	
+      },
+      { $sort: { 'puntaje': -1 }}
+   ]  
+)
