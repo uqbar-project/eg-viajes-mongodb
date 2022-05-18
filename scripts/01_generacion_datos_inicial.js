@@ -1,7 +1,7 @@
-    db.createCollection("viajes")
+    // db.createCollection("viajes")
 
     db.viajes.insertOne({
-        fecha: "23/04/2017",
+        fecha: "27/04/2017",
         chofer: {
             nombre: "Verónica",
             auto: {

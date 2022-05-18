@@ -52,16 +52,22 @@ var totalesPorCliente = function(nombreCliente, costosViaje) {
 db.viajes.mapReduce(mapCostosDelMes, totalesPorCliente, { out: "totalesPorCliente" })
 
 
-/* Lo mismo con un aggregate.sum */
+/* Totales por cliente ordenado por el que más pagó primero */
 db.viajes.aggregate( [
-   { $match: { fecha : '23/04/2017' } },
-   { $unwind: '$cliente' },
+   { $match: { fecha : '24/04/2017' } },
    { $group: {
         _id: '$cliente.nombre',
         costo: { $sum: '$costo' }
      }	
-   }
+   },
+   { $sort: { 'costo': -1 } }
 ])
 
-/* Aumento retroactivo de los viajes en un 20% */
-db.viajes.update()
+/* Cambiamos el costo del viaje de Verónica del 23/04/2017 , importante el set para no pisar todos los datos */
+db.viajes.update({ "chofer.nombre": "Verónica", "fecha": "23/04/2017"}, {"$set": { "costo": 240 } })
+
+/* Aumento de todos los viajes de Daniel un 20% */
+let bulk = db.viajes.initializeOrderedBulkOp()
+bulk.find({ "chofer.nombre": "Daniel" }).update({ "$mul": { "costo": 1.2 }})
+bulk.execute()
+db.viajes.find({ "chofer.nombre": "Daniel"})
