@@ -6,19 +6,6 @@
 
 Muestra cómo generar una [base de viajes de una remisería](https://docs.google.com/document/d/1xJbXRQwSN-wUlYVMrPXHbf9Nf7xJAI-k_-QUjs4KkRI/edit#) en MongoDB.
 
-## Modelo
-
-El modelo de datos se estructura en un documento que contiene: 
-
-* fecha
-* origen
-* destino
-* costo
-* el chofer
- * nombre
- * con el auto (del cual conocemos la patente, el kilometraje, marca y modelo)
-* y los datos del cliente
- 
 ## Instalación del entorno Mongo
 
 Solo hace falta tener instalado [Docker](https://www.docker.com/). Una vez resuelto este paso abrí una consola de comandos y escribí
@@ -72,6 +59,19 @@ Los pasos son:
 - Luego seleccionar `Viajes` y el botón `Import` (o bien doble-click)
 - y trabajar normalmente
 
+## Modelo
+
+El modelo de datos se estructura en un documento que contiene: 
+
+* fecha
+* origen
+* destino
+* costo
+* el chofer
+ * nombre
+ * con el auto (del cual conocemos la patente, el kilometraje, marca y modelo)
+* y los datos del cliente
+ 
 ## Scripts
 
 Podés fijarte en la carpeta [scripts](scripts) los queries que podés correr para seguir los ejemplos del apunte.
