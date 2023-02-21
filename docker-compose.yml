@@ -12,7 +12,7 @@ services:
     volumes:
       - ~/mongo/viajes_db:/data/db
       - ~/mongo/viajes_log:/var/log/mongodb/
-      - ./Docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./Docker/mongo-init.js:/docker-entrypoint-initdb.d/01-mongo-init.js:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: capo
       MONGO_INITDB_ROOT_PASSWORD: eyra

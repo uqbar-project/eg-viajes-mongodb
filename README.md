@@ -1,9 +1,13 @@
 # Viajes de una remisería - Ejemplo puro en MongoDB
 
+[![build-viajes](https://github.com/uqbar-project/eg-viajes-mongodb/actions/workflows/build.yml/badge.svg)](https://github.com/uqbar-project/eg-viajes-mongodb/actions/workflows/build.yml)
+
 ## Objetivo
+
 Muestra cómo generar una [base de viajes de una remisería](https://docs.google.com/document/d/1xJbXRQwSN-wUlYVMrPXHbf9Nf7xJAI-k_-QUjs4KkRI/edit#) en MongoDB.
 
 ## Modelo
+
 El modelo de datos se estructura en un documento que contiene: 
 
 * fecha
@@ -64,7 +68,7 @@ Los pasos son:
 
 - `File > Connect (Ctrl + N)`
 - En la ventana de diálogo presionar el botón `Import`
-- Seleccionar [el archivo URI que está en este directorio](Studio_3T_Connection_URI_Export.uri) y luego el botón `Import`
+- Seleccionar la opción `Open Connection URI File`, [el archivo URI que está en este directorio](Studio_3T_Connection_URI_Export.uri) y luego el botón `Import`
 - Luego seleccionar `Viajes` y el botón `Import` (o bien doble-click)
 - y trabajar normalmente
 
