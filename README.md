@@ -8,10 +8,11 @@ Muestra cómo generar una [base de viajes de una remisería](https://docs.google
 
 ## Instalación del entorno Mongo
 
-Solo hace falta tener instalado [Docker](https://www.docker.com/). Una vez resuelto este paso abrí una consola de comandos y escribí
+Solo hace falta tener instalado Docker Desktop (el pack docker engine y docker compose), seguí las instrucciones de [esta página](https://phm.uqbar-project.org/material/software) en el párrafo `Docker`.
+
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 Eso te levanta una base documental MongoDB.
@@ -29,7 +30,7 @@ Ambas son buenas herramientas aunque son pagas y te proveen una versión de prue
 
 ### Instalación Studio 3T
 
-Podés descargar el instalador de Studio 3T para tu sistema operativo en [este link](https://studio3t.com/free/). Luego lo descomprimís y ejecutás el asistente.\
+Podés descargar el instalador de Studio 3T para tu sistema operativo en [este link](https://studio3t.com/free/). Luego lo descomprimís y ejecutás el asistente.
 
 En la primera pantalla aceptás el acuerdo:
 
