@@ -28,10 +28,3 @@ db.runCommand( {
 //    destino: "Lincoln y 25 de Mayo (San Martín)",
 //    costo: 10
 // })
-
-
-db.equipos.aggregate([
-   { $unwind: "$jugadores" },
-   { $match: { "jugadores.nombre": {"$regex": "Casta.*"} } },
-   { $sort: { nombre: -1 } }
-]);

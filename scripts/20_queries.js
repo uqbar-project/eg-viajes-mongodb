@@ -5,7 +5,7 @@ db.viajes.find({"fecha": "24/04/2017"}).pretty()
 db.viajes.find({"fecha": "24/04/2017"}).count()
 
 /* Los destinos de los viajes del 24/04 */
-db.viajes.find({"fecha": "24/04/2017"}).map( viaje => viaje.destino )
+db.viajes.find({"fecha": "24/04/2017"}).map((viaje) => viaje.destino)
 
 /* Otra forma de hacer la consulta trayendo fecha, origen y destino */
 db.viajes.find({"fecha": "24/04/2017"}, { fecha: 1, origen: 1, destino: 1, _id: 0 })
@@ -38,16 +38,18 @@ db.viajes.find({ "costo": { "$lt": 70 } }).map((viaje) => viaje.destino)
 db.viajes.find({ "costo": { "$lt": 70 } }, { destino: 1, _id: 0 })
 
 /* Conocer el total en $ de un cliente para un mes - deprecado */
-var mapCostosDelMes = function() {
-        var partesFecha = this.fecha.split('/')
-        if (parseInt(partesFecha[1]) == 4) {
-           emit(this.cliente.nombre, this.costo)
-        }
+const mapCostosDelMes = function() {
+   const partesFecha = this.fecha.split('/')
+   if (parseInt(partesFecha[1]) == 4) {
+      emit(this.cliente.nombre, this.costo)
+   }
 }
 
-var totalesPorCliente = function(nombreCliente, costosViaje) {
-		return { costo: Array.sum(costosViaje) }
-}
+const totalesPorCliente =
+ function(nombreCliente, costosViaje) {
+    return Array.sum(costosViaje)
+ }
+
 
 db.viajes.mapReduce(mapCostosDelMes, totalesPorCliente, { out: "totalesPorCliente" })
 
@@ -58,16 +60,17 @@ db.viajes.aggregate( [
    { $group: {
         _id: '$cliente.nombre',
         costo: { $sum: '$costo' }
-     }	
+     }  
    },
    { $sort: { 'costo': -1 } }
 ])
 
-/* Cambiamos el costo del viaje de Verónica del 24/04/2017 , importante el set para no pisar todos los datos */
-db.viajes.update({ "chofer.nombre": "Verónica", "fecha": "24/04/2017"}, {"$set": { "costo": 240 } })
+/* Cambiamos el costo del viaje de Verónica del 27/04/2017 , importante el set para no pisar todos los datos */
+db.viajes.update({ "chofer.nombre": "Verónica", "fecha": "27/04/2017"}, {"$set": { "costo": Double(240) } })
+// en la última versión el Double evita que la constraint lo haga fallar
 
 /* Aumento de todos los viajes de Daniel un 20% */
-let bulk = db.viajes.initializeOrderedBulkOp()
+const bulk = db.viajes.initializeOrderedBulkOp()
 bulk.find({ "chofer.nombre": "Daniel" }).update({ "$mul": { "costo": 1.2 }})
 bulk.execute()
 db.viajes.find({ "chofer.nombre": "Daniel"})
@@ -76,14 +79,24 @@ db.viajes.find({ "chofer.nombre": "Daniel"})
 db.choferes.insertOne({ "nombre": "Verónica", puntajes: [ 3, 5, 4]})
 db.choferes.insertOne({ "nombre": "Daniel", puntajes: [ 4, 4, 4, 5, 5, 5]})
 
+// con unwind tenemos un producto cartesiano...
+db.choferes.aggregate(
+   [
+      { $unwind: '$puntajes' },
+      { $sort: { 'puntaje': -1 }}
+   ]  
+)
+
+// ...y con eso podemos obtener cosas como el promedio de puntajes
 db.choferes.aggregate(
    [
       { $unwind: '$puntajes' },
       { $group: {
            _id: '$nombre',
            puntaje: { $avg: '$puntajes' }
-        }	
+        }  
       },
       { $sort: { 'puntaje': -1 }}
    ]  
 )
+
