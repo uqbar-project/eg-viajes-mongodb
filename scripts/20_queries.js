@@ -66,7 +66,7 @@ db.viajes.aggregate( [
 ])
 
 /* Cambiamos el costo del viaje de Verónica del 27/04/2017 , importante el set para no pisar todos los datos */
-db.viajes.update({ "chofer.nombre": "Verónica", "fecha": "27/04/2017"}, {"$set": { "costo": Double(240) } })
+db.viajes.updateOne({ "chofer.nombre": "Verónica", "fecha": "27/04/2017"}, {"$set": { "costo": Double(240) } })
 // en la última versión el Double evita que la constraint lo haga fallar
 
 /* Aumento de todos los viajes de Daniel un 20% */
