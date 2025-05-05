@@ -46,6 +46,10 @@ En la tercera pantalla elegís "Shell centric":
 
 Luego presionás el botón "Finish" o "Finalizar" y la aplicación se instalará.
 
+## Instalación del mongo shell
+
+Para poder conectarnos a Docker vamos a necesitar tener el shell de Mongo, para lo cual te recomendamos que sigas [esta guía](https://www.mongodb.com/docs/mongodb-shell/install/) posicionándote en la solapa de tu sistema operativo.
+
 ## Conexión a la base desde Studio 3T
 
 Para configurar la conexión contra el contenedor de Mongo, te recomendamos que importes [el archivo de conexión](Studio_3T_Connection_URI_Export.uri):
