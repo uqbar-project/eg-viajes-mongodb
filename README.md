@@ -17,16 +17,34 @@ docker compose up
 
 Eso te levanta una base documental MongoDB.
 
-## Studio 3T: Cliente Mongo
+## Cliente Mongo
 
-Te recomendamos que instales el cliente **Studio-3T** con el que te podés conectar a la base y hacer las consultas a Mongo. 
+Tenés dos opciones para hacer consultas y manipular la base Mongo:
 
-Otras opciones son:
+- **MongoDB Compass** (recomendado, es oficialmente mantenido por Mongo, es fácil de usar y completamente gratuito)
+- **Studio-3T** (tiene una versión gratuita pero limitada y otra Full con un período de prueba de 30 días)
 
-- [Mongo DB Compass](https://www.mongodb.com/es/products/compass)
-- [Mingo](https://mingo.io/)
+### Instalación MongoDB Compass
 
-Ambas son buenas herramientas aunque son pagas y te proveen una versión de prueba por tiempo limitado. En el caso de Studio 3T, una vez pasados los 30 días automáticamente pasás a la versión gratuita con menos features pero sigue sirviendo para completar tus trabajos prácticos.
+Podés descargar el instalador para tu sistema operativo en [este link](https://www.mongodb.com/try/download/compass).
+
+Seleccioná la versión (la última estable) y la plataforma para tu sistema operativo.
+
+Para agregar una conexión, seleccioná `Add Connection` en la parte izquierda:
+
+<img src="./images/dbcompass_add_connection.png" alt="add connection" height="20%" width="20%">
+
+A continuación, copiá este string de conexión:
+
+```bash
+mongodb://capo:eyra@localhost:27020/viajes?authSource=admin
+```
+
+<img src="./images/dbcompass_connection.png" alt="conexión string" height="60%" width="60%">
+
+Hacé click sobre `Save & Connect` (asegurate de haber levantado el container de Docker) y listo.
+
+La documentación oficial de MongoDB Compass está [aquí](https://www.mongodb.com/docs/compass/?utm_source=chatgpt.com).
 
 ### Instalación Studio 3T
 
