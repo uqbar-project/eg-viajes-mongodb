@@ -22,13 +22,18 @@ Eso te levanta una base documental MongoDB.
 Tenés dos opciones para hacer consultas y manipular la base Mongo:
 
 - **MongoDB Compass** (recomendado, es oficialmente mantenido por Mongo, es fácil de usar y completamente gratuito)
-- **Studio-3T** (tiene una versión gratuita pero limitada y otra Full con un período de prueba de 30 días)
+- [**Studio-3T**](https://studio3t.com/free/) (tiene una versión gratuita pero limitada y otra Full con un período de prueba de 30 días)
+- [Mingo]
 
-### Instalación MongoDB Compass
+## MongoDB Compass
+
+### Instalación
 
 Podés descargar el instalador para tu sistema operativo en [este link](https://www.mongodb.com/try/download/compass).
 
 Seleccioná la versión (la última estable) y la plataforma para tu sistema operativo.
+
+### Agregar una conexión
 
 Para agregar una conexión, seleccioná `Add Connection` en la parte izquierda:
 
@@ -46,41 +51,15 @@ Hacé click sobre `Save & Connect` (asegurate de haber levantado el container de
 
 La documentación oficial de MongoDB Compass está [aquí](https://www.mongodb.com/docs/compass/?utm_source=chatgpt.com).
 
-### Instalación Studio 3T
+### Ejecutar consultas
 
-Podés descargar el instalador de Studio 3T para tu sistema operativo en [este link](https://studio3t.com/free/). Luego lo descomprimís y ejecutás el asistente.
+Para ejecutar consultas, tenés dos opciones.
 
-En la primera pantalla aceptás el acuerdo:
+### Mongo shell
 
-![instalación Studio 3T 1](./images/studio3-config-0.png)
+Una vez que te conectes a una base de datos, te aparecerá un botón `Open MongoDB shell` arriba a la derecha para activar la ventana de mongo shell: 
 
-En la segunda pantalla dejás seleccionada la opción por defecto ("Use Studio 3T's default password encryption")
-
-![instalación Studio 3T 2](./images/studio3t-config-1.png)
-
-En la tercera pantalla elegís "Shell centric":
-
-![instalación Studio 3T 3](./images/studio3t-config-2.png)
-
-Luego presionás el botón "Finish" o "Finalizar" y la aplicación se instalará.
-
-## Instalación del mongo shell
-
-Para poder conectarnos a Docker vamos a necesitar tener el shell de Mongo, para lo cual te recomendamos que sigas [esta guía](https://www.mongodb.com/docs/mongodb-shell/install/) posicionándote en la solapa de tu sistema operativo.
-
-## Conexión a la base desde Studio 3T
-
-Para configurar la conexión contra el contenedor de Mongo, te recomendamos que importes [el archivo de conexión](Studio_3T_Connection_URI_Export.uri):
-
-![import connection](images/import_connection.gif)
-
-Los pasos son:
-
-- `File > Connect (Ctrl + N)`
-- En la ventana de diálogo presionar el botón `Import`
-- Seleccionar la opción `Open Connection URI File`, [el archivo URI que está en este directorio](Studio_3T_Connection_URI_Export.uri) y luego el botón `Import`
-- Luego seleccionar `Viajes` y el botón `Import` (o bien doble-click)
-- y trabajar normalmente
+<img src="./images/dbcompass_mongoshell.png" alt="mongo db shell" height="50%" width="70%">
 
 ## Modelo
 
