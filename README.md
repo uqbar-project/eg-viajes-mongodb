@@ -19,11 +19,11 @@ Eso te levanta una base documental MongoDB.
 
 ## Cliente Mongo
 
-Tenés dos opciones para hacer consultas y manipular la base Mongo:
+Tenés estas opciones para hacer consultas y manipular la base Mongo:
 
-- **MongoDB Compass** (recomendado, es oficialmente mantenido por Mongo, es fácil de usar y completamente gratuito)
-- [**Studio-3T**](https://studio3t.com/free/) (tiene una versión gratuita pero limitada y otra Full con un período de prueba de 30 días)
-- [Mingo]
+- **MongoDB Compass**: recomendado, es oficialmente mantenido por Mongo, es fácil de usar y completamente gratuito
+- [**Studio-3T**](https://studio3t.com/free/): tiene una versión gratuita pero limitada y otra Full con un período de prueba de 30 días
+- [Mingo](https://mingo.io/): tiene también una versión gratuita (y limitada)
 
 ## MongoDB Compass
 
@@ -57,9 +57,21 @@ Para ejecutar consultas, tenés dos opciones.
 
 ### Mongo shell
 
-Una vez que te conectes a una base de datos, te aparecerá un botón `Open MongoDB shell` arriba a la derecha para activar la ventana de mongo shell: 
+Una vez que te conectes a una base de datos, te aparecerá el ícono de mongo shell:
 
-<img src="./images/dbcompass_mongoshell.png" alt="mongo db shell" height="50%" width="70%">
+<img src="./images/dbcompass_mongoshell1.png" alt="mongo db shell" height="50%" width="50%">
+
+___
+
+Y si hacés click sobre la conexión y desplegás el panel sobre la derecha, te aparecerá el botón `Open MongoDB shell`:
+
+<img src="./images/dbcompass_mongoshell2.png" alt="mongo db shell" height="70%" width="70%">
+
+___
+
+Aquí podés ejecutar consultas con un editor que tiene autocompletado.
+
+<img src="./images/dbcompass_mongoshell3.png" alt="mongo db shell" height="50%" width="50%">
 
 ## Modelo
 
@@ -77,8 +89,4 @@ El modelo de datos se estructura en un documento que contiene:
 ## Scripts
 
 Podés fijarte en la carpeta [scripts](scripts) los queries que podés correr para seguir los ejemplos del apunte.
-
-## Tips
-
-- Si querés habilitar el tema oscuro para Studio 3T seguí [estas instrucciones](https://studio3t.com/knowledge-base/articles/enable-studio-3t-dark-theme/)
 
