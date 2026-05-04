@@ -1,32 +1,32 @@
 /* Conocer los viajes del 24/04/2017 */
-db.viajes.find({"fecha": "24/04/2017"}).pretty()
+db.viajes.find({"fecha": ISODate("2017-04-24T00:00:00Z")}).pretty()
 
 /* La cantidad de viajes que se hicieron el 24/04 */
-db.viajes.find({"fecha": "24/04/2017"}).count()
+db.viajes.find({"fecha": ISODate("2017-04-24T00:00:00Z")}).count()
 
 /* Los destinos de los viajes del 24/04 */
-db.viajes.find({"fecha": "24/04/2017"}).map((viaje) => viaje.destino)
+db.viajes.find({"fecha": ISODate("2017-04-24T00:00:00Z")}).map((viaje) => viaje.destino)
 
 /* Otra forma de hacer la consulta trayendo fecha, origen y destino */
-db.viajes.find({"fecha": "24/04/2017"}, { fecha: 1, origen: 1, destino: 1, _id: 0 })
+db.viajes.find({"fecha": ISODate("2017-04-24T00:00:00Z")}, { fecha: 1, origen: 1, destino: 1, _id: 0 })
 
 /* Ordenado por origen ascendente */
-db.viajes.find({"fecha": "24/04/2017"}, { fecha: 1, origen: 1, destino: 1, _id: 0 }).sort({origen: 1})
+db.viajes.find({"fecha": ISODate("2017-04-24T00:00:00Z")}, { fecha: 1, origen: 1, destino: 1, _id: 0 }).sort({origen: 1})
 
 /* Ordenado por origen descendente */
-db.viajes.find({"fecha": "24/04/2017"}, { fecha: 1, origen: 1, destino: 1, _id: 0 }).sort({origen: -1})
+db.viajes.find({"fecha": ISODate("2017-04-24T00:00:00Z")}, { fecha: 1, origen: 1, destino: 1, _id: 0 }).sort({origen: -1})
 
 /* Traer los primeros 3 documentos */
 db.viajes.find().limit(3)
 
 /* Vemos el query plan */
-db.viajes.find({"fecha": "24/04/2017"}).explain()
+db.viajes.find({"fecha": ISODate("2017-04-24T00:00:00Z")}).explain()
 
 /* Agregamos un índice por fecha */
 db.viajes.createIndex( {fecha: 1})
 
 /* Cómo queda ahora */
-db.viajes.find({"fecha": "24/04/2017"}).explain()
+db.viajes.find({"fecha": ISODate("2017-04-24T00:00:00Z")}).explain()
 
 /* Conocer qué viajes hizo Daniel */
 db.viajes.find({ "chofer.nombre": "Daniel" }).limit(5)
@@ -39,8 +39,7 @@ db.viajes.find({ "costo": { "$lt": 70 } }, { destino: 1, _id: 0 })
 
 /* Conocer el total en $ de un cliente para un mes - deprecado */
 const mapCostosDelMes = function() {
-   const partesFecha = this.fecha.split('/')
-   if (parseInt(partesFecha[1]) == 4) {
+   if (this.fecha.getMonth() == 3) { // getMonth() devuelve 0-11, 3 = abril
       emit(this.cliente.nombre, this.costo)
    }
 }
@@ -56,7 +55,7 @@ db.viajes.mapReduce(mapCostosDelMes, totalesPorCliente, { out: "totalesPorClient
 
 /* Totales por cliente ordenado por el que más pagó primero */
 db.viajes.aggregate( [
-   { $match: { fecha : '24/04/2017' } },
+   { $match: { fecha : ISODate('2017-04-24T00:00:00Z') } },
    { $group: {
         _id: '$cliente.nombre',
         costo: { $sum: '$costo' }
@@ -66,7 +65,7 @@ db.viajes.aggregate( [
 ])
 
 /* Cambiamos el costo del viaje de Verónica del 27/04/2017 , importante el set para no pisar todos los datos */
-db.viajes.updateOne({ "chofer.nombre": "Verónica", "fecha": "27/04/2017"}, {"$set": { "costo": Double(240) } })
+db.viajes.updateOne({ "chofer.nombre": "Verónica", "fecha": ISODate("2017-04-27T00:00:00Z")}, {"$set": { "costo": Double(240) } })
 // en la última versión el Double evita que la constraint lo haga fallar
 
 /* Aumento de todos los viajes de Daniel un 20% */

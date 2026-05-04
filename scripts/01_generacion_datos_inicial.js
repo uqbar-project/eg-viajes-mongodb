@@ -1,7 +1,7 @@
 // db.createCollection("viajes")
 
 db.viajes.insertOne({
-    fecha: "27/04/2017",
+    fecha: ISODate("2017-04-27T00:00:00Z"),
     chofer: {
         nombre: "Verónica",
         auto: {

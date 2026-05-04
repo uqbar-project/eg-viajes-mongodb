@@ -1,5 +1,5 @@
 db.viajes.insertMany([{
-    "fecha": "2017-04-23T21:53:43Z",
+    "fecha": ISODate("2017-04-23T21:53:43Z"),
     "chofer": {
       "nombre": "Daniel",
       "auto": {
@@ -17,7 +17,7 @@ db.viajes.insertMany([{
     "destino": "Lincoln y 25 de Mayo (San Martín)",
     "costo": 50
   },{
-    "fecha": "24/04/2017",
+    "fecha": ISODate("2017-04-24T00:00:00Z"),
     "chofer": {
       "nombre": "Daniel",
       "auto": {
@@ -35,7 +35,7 @@ db.viajes.insertMany([{
     "destino": "Lincoln y 25 de Mayo (San Martín)",
     "costo": 75
   },{
-    "fecha": "26/04/2017",
+    "fecha": ISODate("2017-04-26T00:00:00Z"),
     "chofer": {
       "nombre": "Daniel",
       "auto": {
@@ -53,7 +53,7 @@ db.viajes.insertMany([{
     "destino": "Estación de San Andrés",
     "costo": 65
   },{
-    "fecha": "02/05/2017",
+    "fecha": ISODate("2017-05-02T00:00:00Z"),
     "chofer": {
       "nombre": "Daniel",
       "auto": {
@@ -71,7 +71,7 @@ db.viajes.insertMany([{
     "destino": "Lincoln y 25 de Mayo (San Martín)",
     "costo": 75
   },{
-    "fecha": "24/04/2017",
+    "fecha": ISODate("2017-04-24T00:00:00Z"),
     "chofer": {
       "nombre": "Verónica",
       "auto": {
@@ -89,7 +89,7 @@ db.viajes.insertMany([{
     "destino": "Lincoln y 25 de Mayo (San Martín)",
     "costo": 75
   },{
-    "fecha": "24/04/2017",
+    "fecha": ISODate("2017-04-24T00:00:00Z"),
     "chofer": {
       "nombre": "Verónica",
       "auto": {
