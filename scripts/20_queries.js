@@ -37,22 +37,6 @@ db.viajes.find({ "costo": { "$lt": 70 } }).map((viaje) => viaje.destino)
 // o...
 db.viajes.find({ "costo": { "$lt": 70 } }, { destino: 1, _id: 0 })
 
-/* Conocer el total en $ de un cliente para un mes - deprecado */
-const mapCostosDelMes = function() {
-   if (this.fecha.getMonth() == 3) { // getMonth() devuelve 0-11, 3 = abril
-      emit(this.cliente.nombre, this.costo)
-   }
-}
-
-const totalesPorCliente =
- function(nombreCliente, costosViaje) {
-    return Array.sum(costosViaje)
- }
-
-
-db.viajes.mapReduce(mapCostosDelMes, totalesPorCliente, { out: "totalesPorCliente" })
-
-
 /* Totales por cliente ordenado por el que más pagó primero */
 db.viajes.aggregate( [
    { $match: { fecha : ISODate('2017-04-24T00:00:00Z') } },
@@ -65,8 +49,7 @@ db.viajes.aggregate( [
 ])
 
 /* Cambiamos el costo del viaje de Verónica del 27/04/2017 , importante el set para no pisar todos los datos */
-db.viajes.updateOne({ "chofer.nombre": "Verónica", "fecha": ISODate("2017-04-27T00:00:00Z")}, {"$set": { "costo": Double(240) } })
-// en la última versión el Double evita que la constraint lo haga fallar
+db.viajes.updateOne({ "chofer.nombre": "Verónica", "fecha": ISODate("2017-04-27T00:00:00Z")}, {"$set": { "costo": 240 } })
 
 /* Aumento de todos los viajes de Daniel un 20% */
 const bulk = db.viajes.initializeOrderedBulkOp()
